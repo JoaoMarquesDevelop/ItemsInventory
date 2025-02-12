@@ -1,5 +1,6 @@
 package joao.academy.inventory.controller;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import joao.academy.inventory.domain.DTO.ProductDTO;
 import joao.academy.inventory.domain.DTO.ProductRequestDTO;
@@ -53,7 +54,7 @@ public class ProductController {
     }
     
     @PostMapping()
-    public ResponseEntity<Void> addProduct(@RequestBody ProductRequestDTO product) {
+    public ResponseEntity<Void> addProduct(@Valid @RequestBody ProductRequestDTO product) {
         productService.addProduct(product);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }

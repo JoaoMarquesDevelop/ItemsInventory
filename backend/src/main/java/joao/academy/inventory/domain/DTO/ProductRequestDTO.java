@@ -1,9 +1,13 @@
 package joao.academy.inventory.domain.DTO;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 
 
-import javax.validation.constraints.*;
 
 /**
  * Request sent by super user
@@ -22,7 +26,6 @@ public class ProductRequestDTO {
     @DecimalMin(value = "0.01", message = "Price must be greater than 0")
     private BigDecimal price;
     
-    @NotNull(message = "Availability status is required")
     private boolean available;
     
     @Min(value = 1, message = "Category ID must be greater than 0")
