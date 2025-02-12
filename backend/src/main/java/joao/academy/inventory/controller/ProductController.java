@@ -48,7 +48,7 @@ public class ProductController {
     
     @PutMapping("/{productId}")
     public ResponseEntity<Void> editProduct(@PathVariable String productId,
-                                            @RequestBody ProductRequestDTO product) {
+                                            @Valid @RequestBody ProductRequestDTO product) {
         productService.updateProduct(productId, product);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
