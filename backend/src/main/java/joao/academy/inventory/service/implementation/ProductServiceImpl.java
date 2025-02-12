@@ -26,8 +26,7 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
     }
-    
-    // TODO
+
     @Override
     public List<ProductDTO> getAllProducts() {
         List<ProductEntity> products = productRepository.findAll();

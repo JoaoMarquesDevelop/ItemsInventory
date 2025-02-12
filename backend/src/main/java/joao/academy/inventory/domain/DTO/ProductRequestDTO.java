@@ -28,7 +28,7 @@ public class ProductRequestDTO {
     
     private boolean available;
     
-    @Min(value = 1, message = "Category ID must be greater than 0")
+    @Min(value = 0, message = "Category ID must be positive")
     private long categoryId;
     
     @Min(value = 0, message = "Stock quantity cannot be negative")

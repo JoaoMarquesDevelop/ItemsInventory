@@ -10,11 +10,6 @@ public class NotFoundException extends RuntimeException {
         this.message = message;
     }
     
-    public NotFoundException(String message, Throwable cause) {
-        super(message, cause);  // Call to the parent RuntimeException constructor with cause
-        this.message = message;
-    }
-    
     public String getMessage() {
         return message;
     }
