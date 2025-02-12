@@ -4,6 +4,7 @@ import static org.springframework.http.HttpMethod.OPTIONS;
 
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +22,15 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class SecurityConfig {
     
+    @Value("${security.super-user.username}")
+    private String superUserUsername;
+    
+    @Value("${security.super-user.password}")
+    private String superUserPassword;
+    
+    @Value("${security.super-user.roles}")
+    private String superUserRoles;
+    
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -29,16 +39,17 @@ public class SecurityConfig {
                         .anyRequest().authenticated())
                 .httpBasic()
                 .and()
-                .cors(); 
+                .cors();
         return http.build();
     }
     
     @Bean
     public UserDetailsService userDetailsService() {
+        
         UserDetails superUser = User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("admin123")
-                .roles("ADMIN")
+                .username(superUserUsername)
+                .password(superUserPassword)
+                .roles(superUserRoles)
                 .build();
         
         return new InMemoryUserDetailsManager(superUser);
