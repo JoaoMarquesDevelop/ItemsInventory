@@ -7,7 +7,7 @@ A product management system built with Spring Boot.
 ### Prerequisites
 
 - **Java 23**: You can use Amazon Coretto
-- **MySQL**: You can start a MySQL container running for the database.
+- **Docker**: Use docker to start a MySQL container, to run our database
 
 ### Setting Up the Backend
 
