@@ -2,7 +2,9 @@ package joao.academy.inventory.domain.DTO;
 
 import java.math.BigDecimal;
 import joao.academy.inventory.domain.entity.ProductEntity;
+import lombok.Data;
 
+@Data
 public class ProductDTO {
     private Long id;
     private String name;
@@ -25,33 +27,5 @@ public class ProductDTO {
             this.categoryPath = productEntity.getCategory().getCategoryPath();
         }
         this.stockQuantity = productEntity.getStockQuantity();
-    }
-    
-    public Long getId() {
-        return id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public String getDescription() {
-        return description;
-    }
-    
-    public BigDecimal getPrice() {
-        return price;
-    }
-    
-    public boolean isAvailable() {
-        return available;
-    }
-    
-    public String getCategoryPath() {
-        return categoryPath;
-    }
-    
-    public int getStockQuantity() {
-        return stockQuantity;
     }
 }

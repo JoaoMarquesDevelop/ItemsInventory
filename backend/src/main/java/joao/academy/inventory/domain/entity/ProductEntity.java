@@ -10,11 +10,23 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
+import java.util.Objects;
 import joao.academy.inventory.domain.DTO.ProductRequestDTO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "product")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ProductEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,34 +42,6 @@ public class ProductEntity {
     @JoinColumn(name = "category_id", nullable = false)
     private CategoryEntity category;
     
-    public Long getId() {
-        return id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public String getDescription() {
-        return description;
-    }
-    
-    public BigDecimal getPrice() {
-        return price;
-    }
-    
-    public Boolean getAvailable() {
-        return available;
-    }
-    
-    public CategoryEntity getCategory() {
-        return category;
-    }
-    
-    public Integer getStockQuantity() {
-        return stockQuantity;
-    }
-    
     public void set(ProductRequestDTO productRequestDTO, CategoryEntity categoryEntity) {
         this.name = productRequestDTO.getName();
         this.description = productRequestDTO.getDescription();
@@ -67,4 +51,17 @@ public class ProductEntity {
         this.category = categoryEntity;
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ProductEntity that = (ProductEntity) o;
+        return Objects.equals(id, that.id);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

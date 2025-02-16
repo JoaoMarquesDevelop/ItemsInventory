@@ -3,17 +3,17 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     defer-datasource-initialization: true
   datasource:
-    url: "jdbc:mysql://localhost:3306/inventory?allowPublicKeyRetrieval=true&useSSL=FALSE"
+    url: "jdbc:mysql://localhost:3307/inventory?allowPublicKeyRetrieval=true&useSSL=FALSE"
     username: "joao"
     password: "1234"
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   sql:
     init:
-      mode: always
+      mode: never
       
 security:
   super-user:
