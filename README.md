@@ -11,17 +11,23 @@ A product management system built with Spring Boot.
 
 ### Setting Up the Backend
 
-1. **Start the MySQL container**:  
-   In the backend/docker directory, use Docker Compose to start the MySQL container:
-   ```bash
-   docker compose -d
-   ```
+1. Install amazon coretto 23 and set it to JAVA_HOME
 
-2. Run the Spring Boot application:
-    This will automatically trigger the schema.sql and data.sql scripts to set up the database default tables and rows.
+2. Start Docker
+
+3. Run the Spring Boot application:
+    
+    - go to folder
+    ```bash
+    cd backend
+    ```
+    - Start!
+
     ```bash
     mvn spring-boot:run -Dspring-boot.run.profiles=dev
     ```
+
+    This will automatically start a mysql container and prepare your db with default data
 
 ### Setting Up the Frontend
 
