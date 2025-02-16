@@ -30,7 +30,6 @@ public class DataLoader implements ApplicationRunner {
     
     @Override
     public void run(ApplicationArguments args) {
-        System.out.println(activeProfile);
         if (Objects.equals(activeProfile, "dev")){
             loadCategoriesAndProducts();
         }
